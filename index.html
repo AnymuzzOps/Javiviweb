@@ -52,7 +52,7 @@
       content: '';
       position: fixed;
       inset: 0;
-      background: rgba(253, 240, 245, 0.80);
+      background: rgba(253, 240, 245, 0.82);
       pointer-events: none;
       z-index: 0;
     }
@@ -1171,6 +1171,81 @@
       box-shadow: 0 8px 28px rgba(193,53,132,0.4);
     }
 
+
+    .wave-divider {
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      margin: 0;
+    }
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+    }
+    .wave-divider.flip { transform: scaleY(-1); }
+
+    .steps-section { background: rgba(255,255,255,0.75); }
+    .shipping-banner { background: rgba(255,255,255,0.85); }
+    .custom-section { background: rgba(232,130,154,0.06); }
+    .care-section { background: rgba(255,255,255,0.75); }
+    .blog-section { background: rgba(253,240,245,0.6); }
+    .instagram-section { background: rgba(232,130,154,0.08); }
+    .reviews-section { background: rgba(255,255,255,0.75); }
+    .contact-section { background: rgba(253,240,245,0.6); }
+
+    .about-section {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.8);
+      padding: 0;
+    }
+    .about-inner {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+    .about-image-wrapper {
+      height: 100%;
+      min-height: 100vh;
+      border-radius: 0;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f9dcea, #f5cfe0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+    }
+    .about-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: clamp(3rem, 8vw, 6rem);
+    }
+    .about-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.1;
+    }
+    @media (max-width: 640px) {
+      .about-inner { grid-template-columns: 1fr; min-height: auto; }
+      .about-image-wrapper { min-height: 60vw; border-radius: 16px; margin: 1.5rem; }
+      .about-content { padding: 1.5rem; }
+      .about-section { min-height: auto; }
+    }
+
   </style>
 </head>
 <body>
@@ -1213,6 +1288,12 @@
     </div>
   </header>
 
+<div class="wave-divider">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="rgba(232,130,154,0.12)"/>
+  </svg>
+</div>
+
 <section class="hero">
   <div class="hero-sparkles">🌙✨</div>
   <h2 class="hero-title">Atrapasueños<br><em>hechos con amor</em></h2>
@@ -1220,10 +1301,10 @@
   <a href="#creaciones" class="hero-cta">Ver creaciones ↓</a>
   <div class="hero-badges">
     <span class="hero-badge">🌸 Minerales naturales</span>
-    <span class="hero-badge">🧶 Tejido a mano</span>
-    <span class="hero-badge">🌿 Energía consciente</span>
-    <span class="hero-badge">💎 Piezas únicas</span>
-  </div>
+    <span class="hero-badge">🎀 Tejido a mano</span>
+    <span class="hero-badge">🦋 Energía consciente</span>
+    <span class="hero-badge">✨ Piezas únicas</span>
+</div>
   <div class="hero-scroll">
     <div class="hero-scroll-line"></div>
     <span>Explorar</span>
@@ -1272,6 +1353,12 @@
   </div>
   </main>
 
+<div class="wave-divider">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,0 C360,60 1080,0 1440,40 L1440,60 L0,60 Z" fill="rgba(255,255,255,0.7)"/>
+  </svg>
+</div>
+
 
   <section class="steps-section" id="como-pedir">
     <h2 class="steps-title">¿Cómo hacer <em>tu pedido?</em></h2>
@@ -1315,6 +1402,12 @@
     </div>
   </div>
   </section>
+
+<div class="wave-divider flip">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="rgba(232,130,154,0.08)"/>
+  </svg>
+</div>
 
 
   <div class="shipping-banner">
@@ -1406,6 +1499,12 @@
   <p class="blog-subtitle">Rituales · Minerales · Cuidados para tu atrapasueños</p>
   <div class="blog-grid" id="blog-grid"></div>
   </section>
+
+<div class="wave-divider">
+  <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,40 C360,0 1080,60 1440,20 L1440,60 L0,60 Z" fill="rgba(255,255,255,0.6)"/>
+  </svg>
+</div>
 
 
   <section class="instagram-section" id="instagram">
