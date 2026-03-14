@@ -1,0 +1,74 @@
+[
+  {
+    "titulo": "Atrapasueños Luna Rosa",
+    "descripcion": "Tejido a mano con hilo de seda rosado y cuarzo rosa. Protege tu descanso y atrae energía amorosa.",
+    "fecha": "2025-03-10",
+    "material": "Cuarzo rosa · Hilo de seda",
+    "precio": "$18.990",
+    "imagen": "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&q=80"
+  },
+  {
+    "titulo": "Atrapasueños Amatista",
+    "descripcion": "Con piedras de amatista natural engarzadas en macramé morado. Favorece el sueño profundo.",
+    "fecha": "2025-03-07",
+    "material": "Amatista · Macramé",
+    "precio": "$22.990",
+    "imagen": "https://images.unsplash.com/photo-1544967082-d9d25d867d66?w=800&q=80"
+  },
+  {
+    "titulo": "Tejido Bohemio Tierra",
+    "descripcion": "Tejido con hilos en tonos tierra y ocre. Incluye semillas naturales y ramas recolectadas a mano.",
+    "fecha": "2025-03-04",
+    "material": "Semillas · Ramas naturales",
+    "precio": "$16.990",
+    "imagen": "https://images.unsplash.com/photo-1591117207239-788bf8de6c3b?w=800&q=80"
+  },
+  {
+    "titulo": "Atrapasueños Ojo de Tigre",
+    "descripcion": "Con ojo de tigre y jaspe rojo. Diseñado para proteger el hogar de energías negativas.",
+    "fecha": "2025-02-28",
+    "material": "Ojo de tigre · Jaspe rojo",
+    "precio": "$24.990",
+    "imagen": "https://images.unsplash.com/photo-1600721391776-b5cd0e0048f9?w=800&q=80"
+  },
+  {
+    "titulo": "Mini Atrapasueños Celestial",
+    "descripcion": "Versión pequeña y delicada, perfecta para el auto o como regalo. Tejida con labradorita.",
+    "fecha": "2025-02-24",
+    "material": "Labradorita · Hilo plateado",
+    "precio": "$9.990",
+    "imagen": "https://images.unsplash.com/photo-1604599340287-2042e85a3802?w=800&q=80"
+  },
+  {
+    "titulo": "Set Familiar de 3 Piezas",
+    "descripcion": "Tres atrapasueños coordinados en distintos tamaños. Ideal para decorar toda la habitación.",
+    "fecha": "2025-02-20",
+    "material": "Algodón orgánico · Plumas",
+    "precio": "$39.990",
+    "imagen": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80"
+  },
+  {
+    "titulo": "Atrapasueños Cuarzo Blanco",
+    "descripcion": "Cuarzo transparente y hilo blanco puro. Amplifica energías positivas y llena de luz tu hogar.",
+    "fecha": "2025-02-15",
+    "material": "Cuarzo transparente · Hilo blanco",
+    "precio": "$19.990",
+    "imagen": "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=800&q=80"
+  },
+  {
+    "titulo": "Tejido Macramé Verde Selva",
+    "descripcion": "Con jaspe verde y algodón orgánico esmeralda. Conecta con la energía de la tierra.",
+    "fecha": "2025-02-10",
+    "material": "Jaspe verde · Algodón orgánico",
+    "precio": "$21.990",
+    "imagen": "https://images.unsplash.com/photo-1567225557594-88d73e55f2cb?w=800&q=80"
+  },
+  {
+    "titulo": "Atrapasueños Turmalina Negra",
+    "descripcion": "La turmalina negra bloquea energías densas y garantiza noches de paz absoluta.",
+    "fecha": "2025-02-05",
+    "material": "Turmalina negra · Hilo negro",
+    "precio": "$26.990",
+    "imagen": "https://images.unsplash.com/photo-1519751138087-5bf79df62d5b?w=800&q=80"
+  }
+]

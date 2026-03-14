@@ -71,21 +71,19 @@
     }
 
     .header-date {
-      font-size: 1rem;
-      letter-spacing: 0.08em;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: #a0506a;
-      font-weight: 600;
-      -webkit-text-size-adjust: 100%;
+      font-weight: 500;
     }
 
     .header-tagline {
-      font-size: 1rem;
-      letter-spacing: 0.08em;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: #a0506a;
-      font-weight: 600;
-      -webkit-text-size-adjust: 100%;
+      font-weight: 500;
     }
 
     .header-main {
@@ -178,19 +176,10 @@
       gap: 1.25rem;
       padding-bottom: 1.5rem;
       -webkit-overflow-scrolling: touch;
-      scrollbar-width: thin;
+      scrollbar-width: none;
       scrollbar-color: #f0c8d8 transparent;
     }
-    .grid::-webkit-scrollbar {
-      height: 6px;
-    }
-    .grid::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    .grid::-webkit-scrollbar-thumb {
-      background: #f0c8d8;
-      border-radius: 10px;
-    }
+    .grid::-webkit-scrollbar { display: none; }
     .grid .card {
       flex: 0 0 300px;
       scroll-snap-align: start;
@@ -253,19 +242,25 @@
       gap: 0.6rem;
     }
 
-    .card-material {
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
+    .card-date {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--text-dim);
-      flex: 1;
+      color: var(--muted);
     }
 
-    .card-price {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--accent);
-      letter-spacing: 0.02em;
+    .card-dot {
+      width: 3px;
+      height: 3px;
+      background: var(--border);
+      border-radius: 50%;
+    }
+
+    .card-num {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--border);
+      font-variant-numeric: tabular-nums;
     }
 
     .card-title {
@@ -385,8 +380,8 @@
       bottom: 2rem;
       right: 2rem;
       z-index: 100;
-      width: 68px;
-      height: 68px;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
       background: #25D366;
       display: flex;
@@ -408,8 +403,8 @@
     }
 
     .whatsapp-btn svg {
-      width: 34px;
-      height: 34px;
+      width: 28px;
+      height: 28px;
       fill: white;
     }
 
@@ -554,7 +549,7 @@
     .blog-section {
       position: relative;
       z-index: 1;
-      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 3rem);
+      padding: 1.5rem clamp(1.5rem, 5vw, 3rem) clamp(3rem, 6vw, 5rem);
       max-width: 1280px;
       margin: 0 auto;
     }
@@ -630,9 +625,11 @@
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       gap: 1.25rem;
-      padding-bottom: 1rem;
+      padding: 0.5rem 1rem 1.5rem;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
+      justify-content: safe center;
+      align-items: stretch;
     }
     .reviews-grid::-webkit-scrollbar { display: none; }
     .review-card {
@@ -644,10 +641,123 @@
       padding: 1.5rem;
       text-align: left;
       box-shadow: 0 2px 16px rgba(232,130,154,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
     .review-stars { color: #f4a261; font-size: 1rem; margin-bottom: 0.75rem; }
     .review-text { font-size: 0.9rem; color: var(--text); line-height: 1.6; margin-bottom: 1rem; }
     .review-name { font-size: 0.78rem; font-weight: 500; color: var(--accent); letter-spacing: 0.05em; }
+
+    .card-material {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      flex: 1;
+    }
+    .card-price {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+    }
+
+.contact-section {
+  position: relative;
+  z-index: 1;
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 3rem);
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+.contact-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.contact-title em { color: var(--accent); font-style: italic; }
+.contact-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+}
+.contact-field { display: flex; flex-direction: column; gap: 0.3rem; }
+.contact-form label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.contact-form select,
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: white;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.contact-form select:focus,
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent);
+}
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+.contact-submit {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.95rem 2rem;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 20px rgba(232,130,154,0.35);
+  align-self: center;
+  margin-top: 0.5rem;
+  font-family: var(--font-body);
+}
+.contact-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(232,130,154,0.45);
+}
+.contact-success {
+  display: none;
+  background: #fff0f5;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  color: var(--text);
+  font-size: 1rem;
+  margin-top: 1.5rem;
+}
+.contact-success.visible { display: block; }
+
   </style>
 </head>
 <body>
@@ -673,7 +783,7 @@
   <p class="hero-desc">Cada pieza es única, tejida a mano con minerales naturales y energía consciente. Diseñadas para proteger tu descanso, limpiar tu espacio y conectarte con la naturaleza.</p>
   <a href="#creaciones" class="hero-cta">Ver creaciones ↓</a>
   <div class="hero-badges">
-    <span class="hero-badge">🪨 Minerales naturales</span>
+    <span class="hero-badge">✦ Minerales naturales</span>
     <span class="hero-badge">🧶 Tejido a mano</span>
     <span class="hero-badge">🌿 Energía consciente</span>
     <span class="hero-badge">💎 Piezas únicas</span>
@@ -691,8 +801,6 @@
     </div>
 
     <div class="carousel-wrapper">
-<button class="carousel-btn prev" onclick="document.getElementById('grid').scrollBy({left:-320,behavior:'smooth'})">‹</button>
-<div class="carousel-wrapper">
 <button class="carousel-btn prev" onclick="document.getElementById('grid').scrollBy({left:-320,behavior:'smooth'})">‹</button>
 <div class="grid" id="grid">
       <!-- Skeletons while loading -->
@@ -737,10 +845,39 @@
 <section class="reviews-section">
   <h2 class="reviews-title">Lo que dicen <em>nuestras clientas</em></h2>
   <p class="reviews-subtitle">✨ Reseñas reales de personas reales ✨</p>
-  <div class="carousel-wrapper">
-    <button class="carousel-btn prev" onclick="document.getElementById('reviews-grid').scrollBy({left:-300,behavior:'smooth'})">‹</button>
-    <div class="reviews-grid" id="reviews-grid"></div>
-    <button class="carousel-btn next" onclick="document.getElementById('reviews-grid').scrollBy({left:300,behavior:'smooth'})">›</button>
+  <div class="reviews-grid" id="reviews-grid"></div>
+</section>
+
+
+<section class="contact-section">
+  <h2 class="contact-title">Escríbenos <em>con amor</em></h2>
+  <p class="contact-subtitle">Consultas · Opiniones · Reclamos</p>
+  <form class="contact-form" action="https://formspree.io/f/XXXXXXXX" method="POST">
+    <div class="contact-field">
+      <label for="nombre">Tu nombre</label>
+      <input type="text" id="nombre" name="nombre" placeholder="¿Cómo te llamas?" required />
+    </div>
+    <div class="contact-field">
+      <label for="email">Tu email</label>
+      <input type="email" id="email" name="email" placeholder="Para responderte 💌" required />
+    </div>
+    <div class="contact-field">
+      <label for="tipo">Tipo de mensaje</label>
+      <select id="tipo" name="tipo" required>
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option value="Consulta">🔍 Consulta</option>
+        <option value="Opinion">💬 Opinión</option>
+        <option value="Reclamo">📢 Reclamo</option>
+      </select>
+    </div>
+    <div class="contact-field">
+      <label for="mensaje">Tu mensaje</label>
+      <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos todo..." required></textarea>
+    </div>
+    <button type="submit" class="contact-submit">Enviar mensaje ✨</button>
+  </form>
+  <div class="contact-success" id="contact-success">
+    🌸 ¡Gracias por escribirnos! Te respondemos pronto con mucho amor.
   </div>
 </section>
 
@@ -819,14 +956,10 @@
 
       const meta = document.createElement('div');
       meta.className = 'card-meta';
-      const material = document.createElement('span');
-      material.className = 'card-material';
-      material.textContent = article.material || '';
-      const price = document.createElement('span');
-      price.className = 'card-price';
-      price.textContent = article.precio || '';
-      meta.appendChild(material);
-      meta.appendChild(price);
+      meta.innerHTML = `
+  <span class="card-material">${article.material || ''}</span>
+  <span class="card-price">${article.precio || ''}</span>
+`;
 
       const title = document.createElement('h2');
       title.className = 'card-title';
@@ -955,6 +1088,24 @@
         grid.scrollLeft -= total;
       }
     });
+
+
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const data = new FormData(this);
+    const res = await fetch(this.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      this.style.display = 'none';
+      document.getElementById('contact-success').classList.add('visible');
+    }
+  });
+}
 
   </script>
 </body>
