@@ -176,19 +176,10 @@
       gap: 1.25rem;
       padding-bottom: 1.5rem;
       -webkit-overflow-scrolling: touch;
-      scrollbar-width: thin;
+      scrollbar-width: none;
       scrollbar-color: #f0c8d8 transparent;
     }
-    .grid::-webkit-scrollbar {
-      height: 6px;
-    }
-    .grid::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    .grid::-webkit-scrollbar-thumb {
-      background: #f0c8d8;
-      border-radius: 10px;
-    }
+    .grid::-webkit-scrollbar { display: none; }
     .grid .card {
       flex: 0 0 300px;
       scroll-snap-align: start;
@@ -558,7 +549,7 @@
     .blog-section {
       position: relative;
       z-index: 1;
-      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 3rem);
+      padding: 1.5rem clamp(1.5rem, 5vw, 3rem) clamp(3rem, 6vw, 5rem);
       max-width: 1280px;
       margin: 0 auto;
     }
@@ -652,6 +643,20 @@
     .review-stars { color: #f4a261; font-size: 1rem; margin-bottom: 0.75rem; }
     .review-text { font-size: 0.9rem; color: var(--text); line-height: 1.6; margin-bottom: 1rem; }
     .review-name { font-size: 0.78rem; font-weight: 500; color: var(--accent); letter-spacing: 0.05em; }
+
+    .card-material {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      flex: 1;
+    }
+    .card-price {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+    }
   </style>
 </head>
 <body>
@@ -677,7 +682,7 @@
   <p class="hero-desc">Cada pieza es única, tejida a mano con minerales naturales y energía consciente. Diseñadas para proteger tu descanso, limpiar tu espacio y conectarte con la naturaleza.</p>
   <a href="#creaciones" class="hero-cta">Ver creaciones ↓</a>
   <div class="hero-badges">
-    <span class="hero-badge">🪨 Minerales naturales</span>
+    <span class="hero-badge">✦ Minerales naturales</span>
     <span class="hero-badge">🧶 Tejido a mano</span>
     <span class="hero-badge">🌿 Energía consciente</span>
     <span class="hero-badge">💎 Piezas únicas</span>
@@ -817,7 +822,10 @@
 
       const meta = document.createElement('div');
       meta.className = 'card-meta';
-      meta.innerHTML = `<span class="card-date">${formatDate(article.fecha)}</span><span class="card-dot"></span><span class="card-num">${num}</span>`;
+      meta.innerHTML = `
+  <span class="card-material">${article.material || ''}</span>
+  <span class="card-price">${article.precio || ''}</span>
+`;
 
       const title = document.createElement('h2');
       title.className = 'card-title';
