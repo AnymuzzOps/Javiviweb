@@ -71,17 +71,19 @@
     }
 
     .header-date {
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: #a0506a;
+      font-weight: 500;
     }
 
     .header-tagline {
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: #a0506a;
+      font-weight: 500;
     }
 
     .header-main {
@@ -551,6 +553,105 @@
       .carousel-btn { display: none; }
       .grid .card { flex: 0 0 260px; }
     }
+
+
+    .blog-section {
+      position: relative;
+      z-index: 1;
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 3rem);
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .blog-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+    .blog-title em { color: var(--accent); font-style: italic; }
+    .blog-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+    .blog-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(232,130,154,0.15);
+    }
+    .blog-emoji { font-size: 2rem; line-height: 1; }
+    .blog-card-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .blog-card-desc { font-size: 0.875rem; color: var(--text-dim); line-height: 1.65; flex: 1; }
+    .blog-card-date { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+    .reviews-section {
+      position: relative;
+      z-index: 1;
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 3rem);
+      text-align: center;
+      background: linear-gradient(180deg, transparent, rgba(232,130,154,0.07), transparent);
+    }
+    .reviews-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .reviews-title em { color: var(--accent); font-style: italic; }
+    .reviews-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+    .reviews-grid {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 1.25rem;
+      padding-bottom: 1rem;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .reviews-grid::-webkit-scrollbar { display: none; }
+    .review-card {
+      flex: 0 0 280px;
+      scroll-snap-align: start;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: left;
+      box-shadow: 0 2px 16px rgba(232,130,154,0.1);
+    }
+    .review-stars { color: #f4a261; font-size: 1rem; margin-bottom: 0.75rem; }
+    .review-text { font-size: 0.9rem; color: var(--text); line-height: 1.6; margin-bottom: 1rem; }
+    .review-name { font-size: 0.78rem; font-weight: 500; color: var(--accent); letter-spacing: 0.05em; }
   </style>
 </head>
 <body>
@@ -628,6 +729,18 @@
 <button class="carousel-btn next" onclick="document.getElementById('grid').scrollBy({left:320,behavior:'smooth'})">›</button>
 </div>
   </main>
+
+<section class="blog-section">
+  <h2 class="blog-title">El Rincón <em>Mágico</em></h2>
+  <p class="blog-subtitle">Rituales · Minerales · Cuidados para tu atrapasueños</p>
+  <div class="blog-grid" id="blog-grid"></div>
+</section>
+
+<section class="reviews-section">
+  <h2 class="reviews-title">Lo que dicen <em>nuestras clientas</em></h2>
+  <p class="reviews-subtitle">✨ Reseñas reales de personas reales ✨</p>
+  <div class="reviews-grid" id="reviews-grid"></div>
+</section>
 
   <!-- ─── FOOTER ─── -->
   <footer>
@@ -746,18 +859,20 @@
     function renderArticles(articles) {
       const grid = document.getElementById('grid');
       grid.innerHTML = '';
-
       if (!articles || articles.length === 0) {
-        grid.innerHTML = `
-          <div class="state-message">
-            <p>No hay artículos disponibles por el momento.</p>
-          </div>`;
+        grid.innerHTML = '<div class="state-message"><p>No hay artículos disponibles.</p></div>';
         return;
       }
-
-      articles.forEach((article, i) => {
-        grid.appendChild(buildCard(article, i));
+      // Triplicar los artículos para simular loop infinito
+      const looped = [...articles, ...articles, ...articles];
+      looped.forEach((article, i) => {
+        grid.appendChild(buildCard(article, i % articles.length));
       });
+      // Posicionar en el bloque del medio al inicio
+      setTimeout(() => {
+        const cardWidth = 300 + 20; // flex: 0 0 300px + gap 1.25rem
+        grid.scrollLeft = cardWidth * articles.length;
+      }, 50);
     }
 
     function renderError(msg) {
@@ -782,6 +897,56 @@
         console.error('Error cargando artículos:', err);
         renderError('No se pudo cargar el contenido. Intenta de nuevo más tarde.');
       });
+
+    fetch('./opiniones.json')
+      .then(r => r.json())
+      .then(opiniones => {
+        const grid = document.getElementById('reviews-grid');
+        opiniones.forEach(op => {
+          const card = document.createElement('div');
+          card.className = 'review-card';
+          card.innerHTML = `
+            <div class="review-stars">${'★'.repeat(op.estrellas)}</div>
+            <p class="review-text">"${op.comentario}"</p>
+            <span class="review-name">— ${op.nombre}</span>
+          `;
+          grid.appendChild(card);
+        });
+      });
+
+    fetch('./blog.json')
+      .then(r => r.json())
+      .then(posts => {
+        const grid = document.getElementById('blog-grid');
+        posts.forEach(post => {
+          const card = document.createElement('div');
+          card.className = 'blog-card';
+          const fecha = (() => {
+            const [y,m,d] = post.fecha.split('-').map(Number);
+            return new Date(y,m-1,d).toLocaleDateString('es-CL',{day:'numeric',month:'long',year:'numeric'});
+          })();
+          card.innerHTML = `
+            <div class="blog-emoji">${post.emoji}</div>
+            <h3 class="blog-card-title">${post.titulo}</h3>
+            <p class="blog-card-desc">${post.descripcion}</p>
+            <span class="blog-card-date">${fecha}</span>
+          `;
+          grid.appendChild(card);
+        });
+      });
+
+    // Reposicionar silenciosamente al llegar a los extremos
+    document.getElementById('grid').addEventListener('scroll', function() {
+      const grid = this;
+      const cardWidth = 320;
+      const total = grid.scrollWidth / 3;
+      if (grid.scrollLeft < cardWidth) {
+        grid.scrollLeft += total;
+      } else if (grid.scrollLeft > total * 2 - cardWidth) {
+        grid.scrollLeft -= total;
+      }
+    });
+
   </script>
 </body>
 </html>
