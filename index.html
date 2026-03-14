@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>El Observador</title>
+  <title>La Pequeña Tinkerbell</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -16,13 +16,13 @@
     }
 
     :root {
-      --bg:        #0e0e0e;
-      --surface:   #161616;
-      --border:    #2a2a2a;
-      --muted:     #555;
-      --text:      #e8e3db;
-      --text-dim:  #9a9288;
-      --accent:    #c8a96e;
+      --bg:        #fdf0f5;
+      --surface:   #fff5f8;
+      --border:    #f0c8d8;
+      --muted:     #c9a0b0;
+      --text:      #5a3045;
+      --text-dim:  #9a6878;
+      --accent:    #e8829a;
       --accent-glow: rgba(200, 169, 110, 0.15);
       --white:     #ffffff;
       --radius:    4px;
@@ -34,12 +34,17 @@
 
     body {
       background-color: var(--bg);
+      background-image: url('fondo.png');
+      background-repeat: repeat;
+      background-size: 300px;
+      background-attachment: fixed;
       color: var(--text);
       font-family: var(--font-body);
       font-weight: 300;
       line-height: 1.6;
       min-height: 100vh;
       overflow-x: hidden;
+      padding-top: 52px;
     }
 
     /* ─── NOISE TEXTURE OVERLAY ─── */
@@ -47,11 +52,14 @@
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      background-size: 200px 200px;
+      background: rgba(253, 240, 245, 0.80);
       pointer-events: none;
       z-index: 0;
-      opacity: 0.4;
+    }
+    @media (max-width: 768px) {
+      body::before {
+        background: rgba(253, 240, 245, 0.88);
+      }
     }
 
     /* ─── HEADER ─── */
@@ -62,26 +70,105 @@
       padding: 0 clamp(1.5rem, 5vw, 5rem);
     }
 
-    .header-top {
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(253, 240, 245, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 clamp(1.5rem, 5vw, 3rem);
+      height: 52px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.25rem 0;
-      border-bottom: 1px solid var(--border);
     }
+    .navbar-brand {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      font-style: italic;
+    }
+    .navbar-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+    }
+    .navbar-links a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .navbar-links a:hover { color: var(--accent); }
+    .navbar-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0.25rem;
+    }
+    .navbar-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .navbar-mobile {
+      display: none;
+      position: fixed;
+      top: 52px;
+      left: 0;
+      right: 0;
+      background: rgba(253, 240, 245, 0.98);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      z-index: 99;
+      flex-direction: column;
+      gap: 0;
+    }
+    .navbar-mobile.open { display: flex; }
+    .navbar-mobile a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s ease;
+    }
+    .navbar-mobile a:last-child { border-bottom: none; }
+    .navbar-mobile a:hover { color: var(--accent); }
 
     .header-date {
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: #a0506a;
+      font-weight: 500;
     }
 
     .header-tagline {
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: #a0506a;
+      font-weight: 500;
     }
 
     .header-main {
@@ -95,7 +182,7 @@
       font-weight: 900;
       line-height: 0.95;
       letter-spacing: -0.02em;
-      color: var(--white);
+      color: var(--text);
       text-transform: uppercase;
     }
 
@@ -168,11 +255,22 @@
 
     /* ─── GRID ─── */
     .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5px;
-      background: var(--border);
-      border: 1.5px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 1.25rem;
+      padding-bottom: 1.5rem;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      scrollbar-color: #f0c8d8 transparent;
+    }
+    .grid::-webkit-scrollbar { display: none; }
+    .grid .card {
+      flex: 0 0 300px;
+      scroll-snap-align: start;
+      border: 1px solid #f0c8d8;
+      border-radius: 12px;
+      overflow: hidden;
     }
 
     /* ─── CARD ─── */
@@ -186,7 +284,7 @@
     }
 
     .card:hover {
-      background: #1c1c1c;
+      background: #ffe8f0;
     }
 
     .card:hover .card-image img {
@@ -198,34 +296,22 @@
     }
 
     .card-image {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      background: #1a1a1a;
-      position: relative;
+      width: 100%; aspect-ratio: 16/9; overflow: hidden;
+      background: #f5d5e5; position: relative;
     }
 
     .card-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-      filter: grayscale(20%) brightness(0.85);
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.5s ease; filter: grayscale(10%) brightness(0.95);
     }
 
     .card-image-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #1a1a1a 0%, #222 100%);
+      width: 100%; height: 100%; display: flex;
+      align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #f9dcea 0%, #f5cfe0 100%);
     }
 
-    .card-image-placeholder svg {
-      opacity: 0.15;
-    }
+    .card-image-placeholder svg { opacity: 0.3; stroke: var(--accent); }
 
     .card-body {
       padding: 1.75rem 1.75rem 2rem;
@@ -453,7 +539,8 @@
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 640px) {
-      .header-top { display: none; }
+      .navbar-links { display: none; }
+      .navbar-hamburger { display: flex; }
 
       .grid {
         grid-template-columns: 1fr;
@@ -470,33 +557,717 @@
         width: 50px;
         height: 50px;
       }
+      .step-card { padding: 1.25rem 1rem; gap: 0.6rem; }
+      .step-number { width: 36px; height: 36px; font-size: 1rem; }
+      .step-emoji { font-size: 1.5rem; }
+      .step-title { font-size: 1rem; }
+      .step-desc { font-size: 0.8rem; }
+      .about-image-wrapper { aspect-ratio: 4/3; }
+      .steps-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+      .step-card { flex-direction: row; text-align: left; padding: 1rem; gap: 1rem; align-items: center; }
+      .step-number { flex-shrink: 0; }
+      .step-emoji { display: none; }
+      .step-desc { font-size: 0.78rem; }
     }
+
+    .hero {
+      position: relative; z-index: 1; min-height: 85vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 8vw, 6rem);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(232,130,154,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(240,200,216,0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 80% 20%, rgba(255,182,206,0.2) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-sparkles { font-size: clamp(2rem,5vw,3.5rem); margin-bottom: 1.5rem; animation: float 3s ease-in-out infinite; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(2.5rem,8vw,6rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.02em; color: var(--text); margin-bottom: 1.5rem; }
+    .hero-title em { color: var(--accent); font-style: italic; }
+    .hero-desc { max-width: 600px; font-size: clamp(1rem,2vw,1.15rem); color: var(--text-dim); line-height: 1.75; margin-bottom: 2.5rem; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--accent); color: white; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; padding: 0.85rem 2rem; border-radius: 100px; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 4px 20px rgba(232,130,154,0.35); }
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,130,154,0.45); }
+    .hero-scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.4rem; color: var(--muted); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; }
+    .hero-scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin-top: 2rem; }
+    .hero-badge {
+      background: rgba(232,130,154,0.18);
+      border: 1px solid rgba(232,130,154,0.5);
+      color: #c0486a;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: none;
+      font-weight: 500;
+      padding: 0.5rem 1.1rem;
+      border-radius: 100px;
+    }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    @keyframes scrollPulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    .carousel-wrapper {
+      position: relative;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background: white;
+      border: 1px solid #f0c8d8;
+      color: #c0486a;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 12px rgba(232,130,154,0.2);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .carousel-btn:hover {
+      background: #ffe8f0;
+      transform: translateY(-50%) scale(1.08);
+    }
+    .carousel-btn.prev { left: -20px; }
+    .carousel-btn.next { right: -20px; }
+    @media (max-width: 640px) {
+      .carousel-btn { display: none; }
+      .grid .card { flex: 0 0 260px; }
+    }
+
+
+    .blog-section {
+      position: relative;
+      z-index: 1;
+      padding: 1.5rem clamp(1.5rem, 5vw, 3rem) clamp(3rem, 6vw, 5rem);
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .blog-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+    .blog-title em { color: var(--accent); font-style: italic; }
+    .blog-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+    .blog-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(232,130,154,0.15);
+    }
+    .blog-emoji { font-size: 2rem; line-height: 1; }
+    .blog-card-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .blog-card-desc { font-size: 0.875rem; color: var(--text-dim); line-height: 1.65; flex: 1; }
+    .blog-card-date { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+    .reviews-section {
+      position: relative;
+      z-index: 1;
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 3rem);
+      text-align: center;
+      background: linear-gradient(180deg, transparent, rgba(232,130,154,0.07), transparent);
+    }
+    .reviews-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .reviews-title em { color: var(--accent); font-style: italic; }
+    .reviews-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+    .reviews-grid {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 1.25rem;
+      padding: 0.5rem 1rem 1.5rem;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      justify-content: safe center;
+      align-items: stretch;
+    }
+    .reviews-grid::-webkit-scrollbar { display: none; }
+    .review-card {
+      flex: 0 0 280px;
+      scroll-snap-align: center;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: left;
+      box-shadow: 0 2px 16px rgba(232,130,154,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .review-stars { color: #f4a261; font-size: 1rem; margin-bottom: 0.75rem; }
+    .review-text { font-size: 0.9rem; color: var(--text); line-height: 1.6; margin-bottom: 1rem; }
+    .review-name { font-size: 0.78rem; font-weight: 500; color: var(--accent); letter-spacing: 0.05em; }
+
+    .card-material {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      flex: 1;
+    }
+    .card-price {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+    }
+
+.contact-section {
+  position: relative;
+  z-index: 1;
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 3rem);
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+.contact-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.contact-title em { color: var(--accent); font-style: italic; }
+.contact-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+}
+.contact-field { display: flex; flex-direction: column; gap: 0.3rem; }
+.contact-form label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.contact-form select,
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: white;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.contact-form select:focus,
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent);
+}
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+.contact-submit {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.95rem 2rem;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 20px rgba(232,130,154,0.35);
+  align-self: center;
+  margin-top: 0.5rem;
+  font-family: var(--font-body);
+}
+.contact-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(232,130,154,0.45);
+}
+.contact-success {
+  display: none;
+  background: #fff0f5;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  color: var(--text);
+  font-size: 1rem;
+  margin-top: 1.5rem;
+}
+.contact-success.visible { display: block; }
+
+
+    .steps-section {
+  position: relative;
+  z-index: 1;
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 3rem);
+  text-align: center;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+    .steps-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+    .steps-title em { color: var(--accent); font-style: italic; }
+    .steps-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+    .steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+    .step-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+    .step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(232,130,154,0.15);
+}
+    .step-number {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+    .step-emoji { font-size: 2rem; line-height: 1; }
+    .step-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+}
+    .step-desc {
+  font-size: 0.875rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  text-align: center;
+}
+    .about-section {
+      position: relative;
+      z-index: 1;
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 3rem);
+      background: rgba(255,255,255,0.8);
+    }
+    .about-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .about-image-wrapper {
+      aspect-ratio: 3/4;
+      border-radius: 24px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f9dcea, #f5cfe0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+    }
+    .about-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .about-image-placeholder {
+      font-size: 4rem;
+      opacity: 0.4;
+    }
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .about-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .about-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.15;
+    }
+    .about-title em { color: var(--accent); font-style: italic; }
+    @media (max-width: 640px) {
+      .about-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .about-image-wrapper { aspect-ratio: 4/3; }
+      .about-content { padding: 0; }
+    }
+    .about-text {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+    .about-signature {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--accent);
+}
+
+
+    .shipping-banner {
+      position: relative;
+      z-index: 1;
+      background: white;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      margin: 0 clamp(1.5rem, 5vw, 3rem);
+      padding: 1.75rem clamp(1.5rem, 5vw, 3rem);
+    }
+    .shipping-banner-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .shipping-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .shipping-item-icon { font-size: 1.5rem; line-height: 1; }
+    .shipping-item-text { display: flex; flex-direction: column; }
+    .shipping-item-title { font-size: 0.85rem; font-weight: 600; color: var(--text); }
+    .shipping-item-desc { font-size: 0.78rem; color: var(--text-dim); }
+
+    .custom-section {
+      position: relative;
+      z-index: 1;
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 3rem);
+      background: linear-gradient(135deg, rgba(232,130,154,0.08) 0%, transparent 60%);
+      text-align: center;
+    }
+    .custom-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .custom-emoji { font-size: 3rem; line-height: 1; }
+    .custom-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--text);
+    }
+    .custom-title em { color: var(--accent); font-style: italic; }
+    .custom-text { font-size: 0.95rem; color: var(--text-dim); line-height: 1.8; max-width: 560px; }
+    .custom-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
+    .custom-tag {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.4rem 1rem;
+      font-size: 0.82rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .custom-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--accent);
+      color: white;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border-radius: 100px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 20px rgba(232,130,154,0.35);
+    }
+    .custom-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(232,130,154,0.45);
+    }
+
+    .care-section {
+      position: relative;
+      z-index: 1;
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 3rem);
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .care-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
+    .care-title em { color: var(--accent); font-style: italic; }
+    .care-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+    .care-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+    .care-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .care-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(232,130,154,0.12);
+    }
+    .care-icon { font-size: 1.75rem; line-height: 1; flex-shrink: 0; }
+    .care-content { display: flex; flex-direction: column; gap: 0.3rem; }
+    .care-card-title { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+    .care-card-desc { font-size: 0.82rem; color: var(--text-dim); line-height: 1.6; }
+
+    .instagram-section {
+      position: relative;
+      z-index: 1;
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 3rem);
+      text-align: center;
+      background: linear-gradient(135deg, rgba(232,130,154,0.12) 0%, rgba(255,182,206,0.08) 100%);
+    }
+    .instagram-inner {
+      max-width: 560px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    .instagram-icon { font-size: 3rem; line-height: 1; }
+    .instagram-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--text);
+    }
+    .instagram-title em { color: var(--accent); font-style: italic; }
+    .instagram-desc { font-size: 0.95rem; color: var(--text-dim); line-height: 1.7; }
+    .instagram-handle {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .instagram-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, #f77737, #e1306c, #c13584);
+      color: white;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border-radius: 100px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 20px rgba(193,53,132,0.3);
+    }
+    .instagram-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(193,53,132,0.4);
+    }
+
+    .steps-section { background: rgba(255,255,255,0.75); }
+    .shipping-banner { background: rgba(255,255,255,0.85); }
+    .custom-section { background: rgba(232,130,154,0.06); }
+    .care-section { background: rgba(255,255,255,0.75); }
+    .blog-section { background: rgba(253,240,245,0.6); }
+    .instagram-section { background: rgba(232,130,154,0.08); }
+    .reviews-section { background: rgba(255,255,255,0.75); }
+    .contact-section { background: rgba(253,240,245,0.6); }
+
+
+    .care-section { background: transparent; }
+    .about-section { background: transparent; }
+    @media (min-width: 641px) {
+      .site-name { font-size: clamp(2rem, 5vw, 4rem); }
+      .hero-title { font-size: clamp(2rem, 5vw, 3.5rem); }
+    }
+
   </style>
 </head>
 <body>
 
   <!-- ─── HEADER ─── -->
+  <nav class="navbar">
+    <a href="#" class="navbar-brand">Tinkerbell</a>
+    <ul class="navbar-links">
+      <li><a href="#tienda">Tienda</a></li>
+      <li><a href="#como-pedir">Cómo pedir</a></li>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#contacto">Ayuda</a></li>
+    </ul>
+    <button class="navbar-hamburger" onclick="toggleMenu()" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="navbar-mobile" id="navbar-mobile">
+    <a href="#tienda" onclick="toggleMenu()">Tienda</a>
+    <a href="#como-pedir" onclick="toggleMenu()">Cómo pedir</a>
+    <a href="#sobre-mi" onclick="toggleMenu()">Sobre mí</a>
+    <a href="#rincon-magico" onclick="toggleMenu()">Rincón Mágico</a>
+    <a href="#instagram" onclick="toggleMenu()">Síguenos en Instagram</a>
+    <a href="#cuida-tu-pieza" onclick="toggleMenu()">Cuida tu pieza</a>
+    <a href="#pedidos-personalizados" onclick="toggleMenu()">Pedidos personalizados</a>
+    <a href="#historia" onclick="toggleMenu()">Nuestra historia</a>
+    <a href="#opiniones" onclick="toggleMenu()">Lo que dicen nuestras clientas</a>
+    <a href="#contacto" onclick="toggleMenu()">Contacto</a>
+    <a href="#contacto" onclick="toggleMenu()">Ayuda</a>
+  </div>
+
   <header>
-    <div class="header-top">
-      <span class="header-date" id="header-date"></span>
-      <span class="header-tagline">Ideas · Perspectivas · Análisis</span>
-    </div>
     <div class="header-main">
-      <h1 class="site-name">El <span>Observador</span></h1>
-      <p class="site-description">Reflexiones sobre el mundo que nos rodea</p>
+      <h1 class="site-name">La Pequeña <span>Tinkerbell</span></h1>
+      <p class="site-description">Deja que La Pequeña Tinkerbell te guíe a un mundo de atrapasueños artesanales, tejidos a mano con minerales naturales y mucha magia. Cada pieza limpia la energía de tu espacio, protege tus sueños y celebra tu conexión con la naturaleza.</p>
       <div class="header-rule">
         <div class="header-rule-diamond"></div>
       </div>
     </div>
   </header>
 
+
+<section class="hero">
+  <div class="hero-sparkles">🌙✨</div>
+  <h2 class="hero-title">Atrapasueños<br><em>hechos con amor</em></h2>
+  <p class="hero-desc">Cada pieza es única, tejida a mano con minerales naturales y energía consciente. Diseñadas para proteger tu descanso, limpiar tu espacio y conectarte con la naturaleza.</p>
+  <a href="#creaciones" class="hero-cta">Ver creaciones ↓</a>
+  <div class="hero-badges">
+    <span class="hero-badge">🌸 Minerales naturales</span>
+    <span class="hero-badge">🎀 Tejido a mano</span>
+    <span class="hero-badge">🦋 Energía consciente</span>
+    <span class="hero-badge">✨ Piezas únicas</span>
+</div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Explorar</span>
+  </div>
+  </section>
+
   <!-- ─── MAIN ─── -->
-  <main>
+  <main id="tienda">
     <div class="section-label">
-      <span>Últimos artículos</span>
+      <span>Nuestras creaciones</span>
     </div>
 
-    <div class="grid" id="grid">
+    <div class="carousel-wrapper">
+<button class="carousel-btn prev" onclick="document.getElementById('grid').scrollBy({left:-320,behavior:'smooth'})">‹</button>
+<div class="grid" id="grid">
       <!-- Skeletons while loading -->
       <div class="skeleton-card">
         <div class="skeleton-img"></div>
@@ -526,11 +1297,201 @@
         </div>
       </div>
     </div>
+<button class="carousel-btn next" onclick="document.getElementById('grid').scrollBy({left:320,behavior:'smooth'})">›</button>
+  </div>
   </main>
+
+
+
+  <section class="steps-section" id="como-pedir">
+    <h2 class="steps-title">¿Cómo hacer <em>tu pedido?</em></h2>
+    <p class="steps-subtitle">Simple, rápido y con mucho amor</p>
+    <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-number">1</div>
+      <div class="step-emoji">🛍️</div>
+      <h3 class="step-title">Elige tu pieza</h3>
+      <p class="step-desc">Explora nuestras creaciones y encuentra la que resuene contigo. Cada pieza tiene su propia energía.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-number">2</div>
+      <div class="step-emoji">💬</div>
+      <h3 class="step-title">Escríbenos por WhatsApp</h3>
+      <p class="step-desc">Cuéntanos qué pieza te enamoró y coordinamos los detalles. También puedes pedir algo personalizado.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-number">3</div>
+      <div class="step-emoji">📦</div>
+      <h3 class="step-title">Recíbelo en casa</h3>
+      <p class="step-desc">Despachamos a todo Chile con mucho cuidado. Tu pieza llega envuelta con amor y lista para colgar.</p>
+    </div>
+  </div>
+  </section>
+  <section class="about-section" id="historia">
+  <div class="about-inner">
+    <div class="about-image-wrapper">
+      <img src="fotojavi.jpg" alt="La creadora de La Pequeña Tinkerbell" />
+    </div>
+    <div class="about-content">
+      <span class="about-label">Nuestra historia</span>
+      <h2 class="about-title">Hecha con <em>magia y amor</em></h2>
+      <p class="about-text">
+        Soy la creadora detrás de La Pequeña Tinkerbell. Empecé a tejer atrapasueños como una forma de sanar, de conectar con la naturaleza y de poner intención en cada nudo.
+      </p>
+      <p class="about-text">
+        Cada pieza que sale de mis manos lleva horas de trabajo, minerales seleccionados con cuidado y mucha energía consciente. No son solo objetos decorativos — son herramientas de bienestar.
+      </p>
+      <span class="about-signature">Con amor ✨</span>
+    </div>
+  </div>
+  </section>
+
+
+
+  <div class="shipping-banner">
+    <div class="shipping-banner-inner">
+      <div class="shipping-item">
+        <div class="shipping-item-icon">📦</div>
+        <div class="shipping-item-text">
+          <span class="shipping-item-title">Envíos a todo Chile</span>
+          <span class="shipping-item-desc">Correos y Starken disponibles</span>
+        </div>
+      </div>
+      <div class="shipping-item">
+        <div class="shipping-item-icon">⏱️</div>
+        <div class="shipping-item-text">
+          <span class="shipping-item-title">3 a 7 días hábiles</span>
+          <span class="shipping-item-desc">Desde confirmación del pedido</span>
+        </div>
+      </div>
+      <div class="shipping-item">
+        <div class="shipping-item-icon">📍</div>
+        <div class="shipping-item-text">
+          <span class="shipping-item-title">Retiro en Santiago</span>
+          <span class="shipping-item-desc">Coordina por WhatsApp</span>
+        </div>
+      </div>
+      <div class="shipping-item">
+        <div class="shipping-item-icon">🎁</div>
+        <div class="shipping-item-text">
+          <span class="shipping-item-title">Empaque especial</span>
+          <span class="shipping-item-desc">Listo para regalar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="custom-section" id="pedidos-personalizados">
+    <div class="custom-inner">
+      <div class="custom-emoji">🎨</div>
+      <h2 class="custom-title">Pedidos <em>personalizados</em></h2>
+      <p class="custom-text">¿Tienes en mente algo especial? Podemos crear tu pieza a medida eligiendo colores, piedras, tamaños y materiales según lo que necesitas.</p>
+      <div class="custom-tags">
+        <span class="custom-tag">🎨 Colores a elección</span>
+        <span class="custom-tag">💎 Piedra que prefieras</span>
+        <span class="custom-tag">📏 Tamaño personalizado</span>
+        <span class="custom-tag">🎁 Ideal para regalos</span>
+        <span class="custom-tag">✍️ Mensaje dedicado</span>
+      </div>
+      <a href="https://wa.me/56XXXXXXXXX" class="custom-cta" target="_blank" rel="noopener noreferrer">Pedir personalizado 💬</a>
+    </div>
+  </section>
+
+  <section class="care-section" id="cuida-tu-pieza">
+    <h2 class="care-title">Cuida tu <em>pieza</em></h2>
+    <p class="care-subtitle">Tips para mantener su energía activa</p>
+    <div class="care-grid">
+      <div class="care-card">
+        <div class="care-icon">🌬️</div>
+        <div class="care-content">
+          <h3 class="care-card-title">Limpia con sahumerio</h3>
+          <p class="care-card-desc">Pasa palo santo o salvia alrededor de tu pieza una vez al mes para limpiar las energías acumuladas.</p>
+        </div>
+      </div>
+      <div class="care-card">
+        <div class="care-icon">🌕</div>
+        <div class="care-content">
+          <h3 class="care-card-title">Carga con luna llena</h3>
+          <p class="care-card-desc">Pon tu pieza cerca de una ventana durante la noche de luna llena para recargar sus minerales.</p>
+        </div>
+      </div>
+      <div class="care-card">
+        <div class="care-icon">💧</div>
+        <div class="care-content">
+          <h3 class="care-card-title">Evita la humedad</h3>
+          <p class="care-card-desc">Los hilos y plumas se deterioran con la humedad. Cuélgalo en un lugar seco y ventilado.</p>
+        </div>
+      </div>
+      <div class="care-card">
+        <div class="care-icon">🤲</div>
+        <div class="care-content">
+          <h3 class="care-card-title">Cárgalo con intención</h3>
+          <p class="care-card-desc">Toma tu pieza entre las manos, cierra los ojos y ponle un deseo o intención. Eso potencia su energía.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="blog-section" id="rincon-magico">
+  <h2 class="blog-title">El Rincón <em>Mágico</em></h2>
+  <p class="blog-subtitle">Rituales · Minerales · Cuidados para tu atrapasueños</p>
+  <div class="blog-grid" id="blog-grid"></div>
+  </section>
+
+
+
+  <section class="instagram-section" id="instagram">
+    <div class="instagram-inner">
+      <div class="instagram-icon">📸</div>
+      <h2 class="instagram-title">Síguenos en <em>Instagram</em></h2>
+      <p class="instagram-desc">Mira el proceso detrás de cada pieza, los minerales que usamos y todas las creaciones nuevas antes que nadie.</p>
+      <span class="instagram-handle">@lapequenatingerbell</span>
+      <a href="https://instagram.com/lapequenatingerbell" class="instagram-cta" target="_blank" rel="noopener noreferrer">Seguir en Instagram ✨</a>
+    </div>
+  </section>
+
+<section class="reviews-section" id="opiniones">
+  <h2 class="reviews-title">Lo que dicen <em>nuestras clientas</em></h2>
+  <p class="reviews-subtitle">✨ Reseñas reales de personas reales ✨</p>
+  <div class="reviews-grid" id="reviews-grid"></div>
+  </section>
+
+
+<section class="contact-section" id="contacto">
+  <h2 class="contact-title">Escríbenos <em>con amor</em></h2>
+  <p class="contact-subtitle">Consultas · Opiniones · Reclamos</p>
+  <form class="contact-form" action="https://formspree.io/f/XXXXXXXX" method="POST">
+    <div class="contact-field">
+      <label for="nombre">Tu nombre</label>
+      <input type="text" id="nombre" name="nombre" placeholder="¿Cómo te llamas?" required />
+    </div>
+    <div class="contact-field">
+      <label for="email">Tu email</label>
+      <input type="email" id="email" name="email" placeholder="Para responderte 💌" required />
+    </div>
+    <div class="contact-field">
+      <label for="tipo">Tipo de mensaje</label>
+      <select id="tipo" name="tipo" required>
+        <option value="" disabled selected>Selecciona una opción</option>
+        <option value="Consulta">🔍 Consulta</option>
+        <option value="Opinion">💬 Opinión</option>
+        <option value="Reclamo">📢 Reclamo</option>
+      </select>
+    </div>
+    <div class="contact-field">
+      <label for="mensaje">Tu mensaje</label>
+      <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos todo..." required></textarea>
+    </div>
+    <button type="submit" class="contact-submit">Enviar mensaje ✨</button>
+  </form>
+  <div class="contact-success" id="contact-success">
+    🌸 ¡Gracias por escribirnos! Te respondemos pronto con mucho amor.
+  </div>
+  </section>
 
   <!-- ─── FOOTER ─── -->
   <footer>
-    <span class="footer-brand">El Observador</span>
+    <span class="footer-brand">La Pequeña Tinkerbell</span>
     <span class="footer-copy">© <span id="year"></span> · Todos los derechos reservados</span>
   </footer>
 
@@ -555,8 +1516,8 @@
     const year = document.getElementById('year');
     const now = new Date();
     const opts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    headerDate.textContent = now.toLocaleDateString('es-CL', opts);
-    year.textContent = now.getFullYear();
+    if (headerDate) headerDate.textContent = now.toLocaleDateString('es-CL', opts);
+    if (year) year.textContent = now.getFullYear();
 
     // ── Format date for cards
     function formatDate(dateStr) {
@@ -603,7 +1564,10 @@
 
       const meta = document.createElement('div');
       meta.className = 'card-meta';
-      meta.innerHTML = `<span class="card-date">${formatDate(article.fecha)}</span><span class="card-dot"></span><span class="card-num">${num}</span>`;
+      meta.innerHTML = `
+  <span class="card-material">${article.material || ''}</span>
+  <span class="card-price">${article.precio || ''}</span>
+`;
 
       const title = document.createElement('h2');
       title.className = 'card-title';
@@ -645,18 +1609,20 @@
     function renderArticles(articles) {
       const grid = document.getElementById('grid');
       grid.innerHTML = '';
-
       if (!articles || articles.length === 0) {
-        grid.innerHTML = `
-          <div class="state-message">
-            <p>No hay artículos disponibles por el momento.</p>
-          </div>`;
+        grid.innerHTML = '<div class="state-message"><p>No hay artículos disponibles.</p></div>';
         return;
       }
-
-      articles.forEach((article, i) => {
-        grid.appendChild(buildCard(article, i));
+      // Triplicar los artículos para simular loop infinito
+      const looped = [...articles, ...articles, ...articles];
+      looped.forEach((article, i) => {
+        grid.appendChild(buildCard(article, i % articles.length));
       });
+      // Posicionar en el bloque del medio al inicio
+      setTimeout(() => {
+        const cardWidth = 300 + 20; // flex: 0 0 300px + gap 1.25rem
+        grid.scrollLeft = cardWidth * articles.length;
+      }, 50);
     }
 
     function renderError(msg) {
@@ -681,6 +1647,87 @@
         console.error('Error cargando artículos:', err);
         renderError('No se pudo cargar el contenido. Intenta de nuevo más tarde.');
       });
+
+    fetch('./opiniones.json')
+      .then(r => r.json())
+      .then(opiniones => {
+        const grid = document.getElementById('reviews-grid');
+        opiniones.forEach(op => {
+          const card = document.createElement('div');
+          card.className = 'review-card';
+          card.innerHTML = `
+            <div class="review-stars">${'★'.repeat(op.estrellas)}</div>
+            <p class="review-text">"${op.comentario}"</p>
+            <span class="review-name">— ${op.nombre}</span>
+          `;
+          grid.appendChild(card);
+        });
+      });
+
+    fetch('./blog.json')
+      .then(r => r.json())
+      .then(posts => {
+        const grid = document.getElementById('blog-grid');
+        posts.forEach(post => {
+          const card = document.createElement('div');
+          card.className = 'blog-card';
+          const fecha = (() => {
+            const [y,m,d] = post.fecha.split('-').map(Number);
+            return new Date(y,m-1,d).toLocaleDateString('es-CL',{day:'numeric',month:'long',year:'numeric'});
+          })();
+          card.innerHTML = `
+            <div class="blog-emoji">${post.emoji}</div>
+            <h3 class="blog-card-title">${post.titulo}</h3>
+            <p class="blog-card-desc">${post.descripcion}</p>
+            <span class="blog-card-date">${fecha}</span>
+          `;
+          grid.appendChild(card);
+        });
+      });
+
+    // Reposicionar silenciosamente al llegar a los extremos
+    document.getElementById('grid').addEventListener('scroll', function() {
+      const grid = this;
+      const cardWidth = 320;
+      const total = grid.scrollWidth / 3;
+      if (grid.scrollLeft < cardWidth) {
+        grid.scrollLeft += total;
+      } else if (grid.scrollLeft > total * 2 - cardWidth) {
+        grid.scrollLeft -= total;
+      }
+    });
+
+
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const data = new FormData(this);
+    const res = await fetch(this.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      this.style.display = 'none';
+      document.getElementById('contact-success').classList.add('visible');
+    }
+  });
+}
+
+
+function toggleMenu() {
+  const menu = document.getElementById('navbar-mobile');
+  menu.classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('navbar-mobile');
+  const btn = document.querySelector('.navbar-hamburger');
+  if (!menu.contains(e.target) && !btn.contains(e.target)) {
+    menu.classList.remove('open');
+  }
+});
+
   </script>
 </body>
 </html>
