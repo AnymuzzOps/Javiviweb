@@ -1,7 +1,3 @@
-diff --git a/articulos.json b/articulos.json
-index edd84ce1faff474363b100533360ae750b08b318..1c4c0f7c00cd6f3af13544851a4d3972408e8045 100644
---- a/articulos.json
-+++ b/articulos.json
 @@ -1,20 +1,74 @@
  [
    {
