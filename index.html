@@ -895,6 +895,187 @@
   color: var(--accent);
 }
 
+
+    .shipping-banner {
+      position: relative;
+      z-index: 1;
+      background: white;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.75rem clamp(1.5rem, 5vw, 3rem);
+    }
+    .shipping-banner-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .shipping-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .shipping-item-icon { font-size: 1.5rem; line-height: 1; }
+    .shipping-item-text { display: flex; flex-direction: column; }
+    .shipping-item-title { font-size: 0.85rem; font-weight: 600; color: var(--text); }
+    .shipping-item-desc { font-size: 0.78rem; color: var(--text-dim); }
+
+    .custom-section {
+      position: relative;
+      z-index: 1;
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 3rem);
+      background: linear-gradient(135deg, rgba(232,130,154,0.08) 0%, transparent 60%);
+      text-align: center;
+    }
+    .custom-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .custom-emoji { font-size: 3rem; line-height: 1; }
+    .custom-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--text);
+    }
+    .custom-title em { color: var(--accent); font-style: italic; }
+    .custom-text { font-size: 0.95rem; color: var(--text-dim); line-height: 1.8; max-width: 560px; }
+    .custom-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
+    .custom-tag {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.4rem 1rem;
+      font-size: 0.82rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .custom-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--accent);
+      color: white;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border-radius: 100px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 20px rgba(232,130,154,0.35);
+    }
+    .custom-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(232,130,154,0.45);
+    }
+
+    .care-section {
+      position: relative;
+      z-index: 1;
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 3rem);
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .care-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
+    .care-title em { color: var(--accent); font-style: italic; }
+    .care-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+    .care-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+    .care-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .care-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(232,130,154,0.12);
+    }
+    .care-icon { font-size: 1.75rem; line-height: 1; flex-shrink: 0; }
+    .care-content { display: flex; flex-direction: column; gap: 0.3rem; }
+    .care-card-title { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+    .care-card-desc { font-size: 0.82rem; color: var(--text-dim); line-height: 1.6; }
+
+    .instagram-section {
+      position: relative;
+      z-index: 1;
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 3rem);
+      text-align: center;
+      background: linear-gradient(135deg, rgba(232,130,154,0.12) 0%, rgba(255,182,206,0.08) 100%);
+    }
+    .instagram-inner {
+      max-width: 560px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    .instagram-icon { font-size: 3rem; line-height: 1; }
+    .instagram-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--text);
+    }
+    .instagram-title em { color: var(--accent); font-style: italic; }
+    .instagram-desc { font-size: 0.95rem; color: var(--text-dim); line-height: 1.7; }
+    .instagram-handle {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .instagram-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, #f77737, #e1306c, #c13584);
+      color: white;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border-radius: 100px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 20px rgba(193,53,132,0.3);
+    }
+    .instagram-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(193,53,132,0.4);
+    }
+
   </style>
 </head>
 <body>
@@ -1017,10 +1198,113 @@
   </div>
   </section>
 
+
+  <div class="shipping-banner">
+    <div class="shipping-banner-inner">
+      <div class="shipping-item">
+        <div class="shipping-item-icon">📦</div>
+        <div class="shipping-item-text">
+          <span class="shipping-item-title">Envíos a todo Chile</span>
+          <span class="shipping-item-desc">Correos y Starken disponibles</span>
+        </div>
+      </div>
+      <div class="shipping-item">
+        <div class="shipping-item-icon">⏱️</div>
+        <div class="shipping-item-text">
+          <span class="shipping-item-title">3 a 7 días hábiles</span>
+          <span class="shipping-item-desc">Desde confirmación del pedido</span>
+        </div>
+      </div>
+      <div class="shipping-item">
+        <div class="shipping-item-icon">📍</div>
+        <div class="shipping-item-text">
+          <span class="shipping-item-title">Retiro en Santiago</span>
+          <span class="shipping-item-desc">Coordina por WhatsApp</span>
+        </div>
+      </div>
+      <div class="shipping-item">
+        <div class="shipping-item-icon">🎁</div>
+        <div class="shipping-item-text">
+          <span class="shipping-item-title">Empaque especial</span>
+          <span class="shipping-item-desc">Listo para regalar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="custom-section">
+    <div class="custom-inner">
+      <div class="custom-emoji">🎨</div>
+      <h2 class="custom-title">Pedidos <em>personalizados</em></h2>
+      <p class="custom-text">¿Tienes en mente algo especial? Podemos crear tu pieza a medida eligiendo colores, piedras, tamaños y materiales según lo que necesitas.</p>
+      <div class="custom-tags">
+        <span class="custom-tag">🎨 Colores a elección</span>
+        <span class="custom-tag">💎 Piedra que prefieras</span>
+        <span class="custom-tag">📏 Tamaño personalizado</span>
+        <span class="custom-tag">🎁 Ideal para regalos</span>
+        <span class="custom-tag">✍️ Mensaje dedicado</span>
+      </div>
+      <a href="https://wa.me/56XXXXXXXXX" class="custom-cta" target="_blank" rel="noopener noreferrer">Pedir personalizado 💬</a>
+    </div>
+  </section>
+
+  <section class="care-section">
+    <h2 class="care-title">Cuida tu <em>pieza</em></h2>
+    <p class="care-subtitle">Tips para mantener su energía activa</p>
+    <div class="care-grid">
+      <div class="care-card">
+        <div class="care-icon">🌬️</div>
+        <div class="care-content">
+          <h3 class="care-card-title">Limpia con sahumerio</h3>
+          <p class="care-card-desc">Pasa palo santo o salvia alrededor de tu pieza una vez al mes para limpiar las energías acumuladas.</p>
+        </div>
+      </div>
+      <div class="care-card">
+        <div class="care-icon">🌕</div>
+        <div class="care-content">
+          <h3 class="care-card-title">Carga con luna llena</h3>
+          <p class="care-card-desc">Pon tu pieza cerca de una ventana durante la noche de luna llena para recargar sus minerales.</p>
+        </div>
+      </div>
+      <div class="care-card">
+        <div class="care-icon">💧</div>
+        <div class="care-content">
+          <h3 class="care-card-title">Evita la humedad</h3>
+          <p class="care-card-desc">Los hilos y plumas se deterioran con la humedad. Cuélgalo en un lugar seco y ventilado.</p>
+        </div>
+      </div>
+      <div class="care-card">
+        <div class="care-icon">☀️</div>
+        <div class="care-content">
+          <h3 class="care-card-title">Sol con moderación</h3>
+          <p class="care-card-desc">Algunos minerales pierden color con el sol directo. Prefiere luz indirecta o natural suave.</p>
+        </div>
+      </div>
+      <div class="care-card">
+        <div class="care-icon">🤲</div>
+        <div class="care-content">
+          <h3 class="care-card-title">Cárgalo con intención</h3>
+          <p class="care-card-desc">Toma tu pieza entre las manos, cierra los ojos y ponle un deseo o intención. Eso potencia su energía.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
 <section class="blog-section">
   <h2 class="blog-title">El Rincón <em>Mágico</em></h2>
   <p class="blog-subtitle">Rituales · Minerales · Cuidados para tu atrapasueños</p>
   <div class="blog-grid" id="blog-grid"></div>
+  </section>
+
+
+  <section class="instagram-section">
+    <div class="instagram-inner">
+      <div class="instagram-icon">📸</div>
+      <h2 class="instagram-title">Síguenos en <em>Instagram</em></h2>
+      <p class="instagram-desc">Mira el proceso detrás de cada pieza, los minerales que usamos y todas las creaciones nuevas antes que nadie.</p>
+      <span class="instagram-handle">@lapequenatingerbell</span>
+      <a href="https://instagram.com/lapequenatingerbell" class="instagram-cta" target="_blank" rel="noopener noreferrer">Seguir en Instagram ✨</a>
+    </div>
   </section>
 
 <section class="reviews-section">
