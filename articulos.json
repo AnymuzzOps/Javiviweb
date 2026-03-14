@@ -1,20 +1,56 @@
 [
   {
-    "titulo": "El arte de simplificar: menos es más en el diseño moderno",
-    "descripcion": "Exploramos cómo los principios del minimalismo están redefiniendo la forma en que creamos productos digitales, espacios y experiencias cotidianas.",
-    "fecha": "2025-03-10",
-    "imagen": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80"
+    "titulo": "Atrapasueños Luna Rosa",
+    "descripcion": "Tejido a mano con cuarzo rosa y plumas suaves para armonizar el descanso y abrir el corazón.",
+    "fecha": "2026-03-01",
+    "imagen": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?w=800&q=80"
   },
   {
-    "titulo": "Inteligencia artificial en la vida diaria: mitos y realidades",
-    "descripcion": "Un recorrido honesto por lo que la IA puede y no puede hacer hoy, alejado del sensacionalismo y con foco en aplicaciones concretas.",
-    "fecha": "2025-03-05",
-    "imagen": "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80"
+    "titulo": "Atrapasueños Bosque Sagrado",
+    "descripcion": "Diseño artesanal en tonos tierra con ágata musgo, ideal para conectar con la energía natural del hogar.",
+    "fecha": "2026-03-02",
+    "imagen": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=800&q=80"
   },
   {
-    "titulo": "Construir hábitos que duran: lo que dice la ciencia",
-    "descripcion": "Revisamos la investigación más reciente sobre formación de hábitos y qué estrategias realmente funcionan para generar cambios sostenibles en el tiempo.",
-    "fecha": "2025-02-28",
-    "imagen": "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=800&q=80"
+    "titulo": "Atrapasueños Brisa Celeste",
+    "descripcion": "Hilos de algodón y amatista que ayudan a calmar la mente y crear una atmósfera serena en tu espacio.",
+    "fecha": "2026-03-03",
+    "imagen": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80"
+  },
+  {
+    "titulo": "Atrapasueños Sol Dorado",
+    "descripcion": "Pieza luminosa con citrino natural, pensada para atraer claridad, alegría y abundancia cotidiana.",
+    "fecha": "2026-03-04",
+    "imagen": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&q=80"
+  },
+  {
+    "titulo": "Atrapasueños Noche Violeta",
+    "descripcion": "Composición bohemia con fluorita y detalles violetas para proteger el sueño profundo y la intuición.",
+    "fecha": "2026-03-05",
+    "imagen": "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=800&q=80"
+  },
+  {
+    "titulo": "Atrapasueños Mar Serena",
+    "descripcion": "Inspirado en el océano, incorpora aguamarina y fibras naturales para refrescar la energía del ambiente.",
+    "fecha": "2026-03-06",
+    "imagen": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=80"
+  },
+  {
+    "titulo": "Atrapasueños Aurora Mineral",
+    "descripcion": "Modelo multicolor con mezcla de minerales pulidos, creado para equilibrar cuerpo, mente y emoción.",
+    "fecha": "2026-03-07",
+    "imagen": "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&q=80"
+  },
+  {
+    "titulo": "Atrapasueños Jardín Esmeralda",
+    "descripcion": "Tejido circular con aventurina verde y cuentas artesanales para invitar prosperidad y bienestar.",
+    "fecha": "2026-03-08",
+    "imagen": "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=800&q=80"
+  },
+  {
+    "titulo": "Atrapasueños Estrella Blanca",
+    "descripcion": "Diseño minimalista con selenita y cintas claras, perfecto para limpiar y elevar la energía del dormitorio.",
+    "fecha": "2026-03-09",
+    "imagen": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80"
   }
 ]
