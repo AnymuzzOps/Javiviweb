@@ -1,0 +1,20 @@
+[
+  {
+    "titulo": "El arte de simplificar: menos es más en el diseño moderno",
+    "descripcion": "Exploramos cómo los principios del minimalismo están redefiniendo la forma en que creamos productos digitales, espacios y experiencias cotidianas.",
+    "fecha": "2025-03-10",
+    "imagen": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80"
+  },
+  {
+    "titulo": "Inteligencia artificial en la vida diaria: mitos y realidades",
+    "descripcion": "Un recorrido honesto por lo que la IA puede y no puede hacer hoy, alejado del sensacionalismo y con foco en aplicaciones concretas.",
+    "fecha": "2025-03-05",
+    "imagen": "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&q=80"
+  },
+  {
+    "titulo": "Construir hábitos que duran: lo que dice la ciencia",
+    "descripcion": "Revisamos la investigación más reciente sobre formación de hábitos y qué estrategias realmente funcionan para generar cambios sostenibles en el tiempo.",
+    "fecha": "2025-02-28",
+    "imagen": "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=800&q=80"
+  }
+]
