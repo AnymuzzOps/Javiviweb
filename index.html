@@ -168,11 +168,31 @@
 
     /* ─── GRID ─── */
     .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5px;
-      background: var(--border);
-      border: 1.5px solid var(--border);
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 1.25rem;
+      padding-bottom: 1.5rem;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: #f0c8d8 transparent;
+    }
+    .grid::-webkit-scrollbar {
+      height: 6px;
+    }
+    .grid::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .grid::-webkit-scrollbar-thumb {
+      background: #f0c8d8;
+      border-radius: 10px;
+    }
+    .grid .card {
+      flex: 0 0 300px;
+      scroll-snap-align: start;
+      border: 1px solid #f0c8d8;
+      border-radius: 12px;
+      overflow: hidden;
     }
 
     /* ─── CARD ─── */
@@ -485,9 +505,52 @@
     .hero-scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.4rem; color: var(--muted); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; }
     .hero-scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollPulse 2s ease-in-out infinite; }
     .hero-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin-top: 2rem; }
-    .hero-badge { background: rgba(232,130,154,0.12); border: 1px solid rgba(232,130,154,0.3); color: var(--accent); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 100px; }
+    .hero-badge {
+      background: rgba(232,130,154,0.18);
+      border: 1px solid rgba(232,130,154,0.5);
+      color: #c0486a;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: none;
+      font-weight: 500;
+      padding: 0.5rem 1.1rem;
+      border-radius: 100px;
+    }
     @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
     @keyframes scrollPulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    .carousel-wrapper {
+      position: relative;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background: white;
+      border: 1px solid #f0c8d8;
+      color: #c0486a;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 12px rgba(232,130,154,0.2);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .carousel-btn:hover {
+      background: #ffe8f0;
+      transform: translateY(-50%) scale(1.08);
+    }
+    .carousel-btn.prev { left: -20px; }
+    .carousel-btn.next { right: -20px; }
+    @media (max-width: 640px) {
+      .carousel-btn { display: none; }
+      .grid .card { flex: 0 0 260px; }
+    }
   </style>
 </head>
 <body>
@@ -514,9 +577,9 @@
   <a href="#creaciones" class="hero-cta">Ver creaciones ↓</a>
   <div class="hero-badges">
     <span class="hero-badge">🪨 Minerales naturales</span>
-    <span class="hero-badge">🧵 Tejido a mano</span>
+    <span class="hero-badge">🧶 Tejido a mano</span>
     <span class="hero-badge">🌿 Energía consciente</span>
-    <span class="hero-badge">✨ Piezas únicas</span>
+    <span class="hero-badge">💎 Piezas únicas</span>
   </div>
   <div class="hero-scroll">
     <div class="hero-scroll-line"></div>
@@ -530,7 +593,9 @@
       <span>Nuestras creaciones</span>
     </div>
 
-    <div class="grid" id="grid">
+    <div class="carousel-wrapper">
+<button class="carousel-btn prev" onclick="document.getElementById('grid').scrollBy({left:-320,behavior:'smooth'})">‹</button>
+<div class="grid" id="grid">
       <!-- Skeletons while loading -->
       <div class="skeleton-card">
         <div class="skeleton-img"></div>
@@ -560,6 +625,8 @@
         </div>
       </div>
     </div>
+<button class="carousel-btn next" onclick="document.getElementById('grid').scrollBy({left:320,behavior:'smooth'})">›</button>
+</div>
   </main>
 
   <!-- ─── FOOTER ─── -->
