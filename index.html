@@ -95,7 +95,7 @@
       font-weight: 900;
       line-height: 0.95;
       letter-spacing: -0.02em;
-      color: var(--white);
+      color: var(--text);
       text-transform: uppercase;
     }
 
@@ -186,7 +186,7 @@
     }
 
     .card:hover {
-      background: #1c1c1c;
+      background: #ffe8f0;
     }
 
     .card:hover .card-image img {
@@ -198,34 +198,22 @@
     }
 
     .card-image {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      background: #1a1a1a;
-      position: relative;
+      width: 100%; aspect-ratio: 16/9; overflow: hidden;
+      background: #f5d5e5; position: relative;
     }
 
     .card-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-      filter: grayscale(20%) brightness(0.85);
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.5s ease; filter: grayscale(10%) brightness(0.95);
     }
 
     .card-image-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #1a1a1a 0%, #222 100%);
+      width: 100%; height: 100%; display: flex;
+      align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #f9dcea 0%, #f5cfe0 100%);
     }
 
-    .card-image-placeholder svg {
-      opacity: 0.15;
-    }
+    .card-image-placeholder svg { opacity: 0.3; stroke: var(--accent); }
 
     .card-body {
       padding: 1.75rem 1.75rem 2rem;
@@ -471,6 +459,35 @@
         height: 50px;
       }
     }
+
+    .hero {
+      position: relative; z-index: 1; min-height: 85vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 8vw, 6rem);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(232,130,154,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 20% 80%, rgba(240,200,216,0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 80% 20%, rgba(255,182,206,0.2) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-sparkles { font-size: clamp(2rem,5vw,3.5rem); margin-bottom: 1.5rem; animation: float 3s ease-in-out infinite; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(2.5rem,8vw,6rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.02em; color: var(--text); margin-bottom: 1.5rem; }
+    .hero-title em { color: var(--accent); font-style: italic; }
+    .hero-desc { max-width: 600px; font-size: clamp(1rem,2vw,1.15rem); color: var(--text-dim); line-height: 1.75; margin-bottom: 2.5rem; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--accent); color: white; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; padding: 0.85rem 2rem; border-radius: 100px; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 4px 20px rgba(232,130,154,0.35); }
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(232,130,154,0.45); }
+    .hero-scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.4rem; color: var(--muted); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; }
+    .hero-scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollPulse 2s ease-in-out infinite; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin-top: 2rem; }
+    .hero-badge { background: rgba(232,130,154,0.12); border: 1px solid rgba(232,130,154,0.3); color: var(--accent); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 100px; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    @keyframes scrollPulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
   </style>
 </head>
 <body>
@@ -490,8 +507,25 @@
     </div>
   </header>
 
+<section class="hero">
+  <div class="hero-sparkles">🌙✨</div>
+  <h2 class="hero-title">Atrapasueños<br><em>hechos con amor</em></h2>
+  <p class="hero-desc">Cada pieza es única, tejida a mano con minerales naturales y energía consciente. Diseñadas para proteger tu descanso, limpiar tu espacio y conectarte con la naturaleza.</p>
+  <a href="#creaciones" class="hero-cta">Ver creaciones ↓</a>
+  <div class="hero-badges">
+    <span class="hero-badge">🪨 Minerales naturales</span>
+    <span class="hero-badge">🧵 Tejido a mano</span>
+    <span class="hero-badge">🌿 Energía consciente</span>
+    <span class="hero-badge">✨ Piezas únicas</span>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Explorar</span>
+  </div>
+</section>
+
   <!-- ─── MAIN ─── -->
-  <main>
+  <main id="creaciones">
     <div class="section-label">
       <span>Nuestras creaciones</span>
     </div>
