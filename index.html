@@ -296,12 +296,13 @@
     }
 
     .card-image {
-      width: 100%; aspect-ratio: 4 / 3; overflow: hidden;
+      width: 100%; aspect-ratio: 3 / 4; overflow: hidden;
+      object-position: center top;
       background: #f5d5e5; position: relative;
     }
 
     .card-image img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
+      width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
       transition: transform 0.5s ease; filter: grayscale(10%) brightness(0.95);
     }
 
@@ -1588,14 +1589,10 @@
       desc.className = 'card-desc';
       desc.textContent = article.descripcion;
 
-      const arrow = document.createElement('span');
-      arrow.className = 'card-arrow';
-      arrow.textContent = 'Leer más →';
 
       body.appendChild(meta);
       body.appendChild(title);
       body.appendChild(desc);
-      body.appendChild(arrow);
       card.appendChild(body);
 
       return card;
