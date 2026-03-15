@@ -1213,6 +1213,21 @@
       }
     }
 
+
+    .navbar-moon {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      white-space: nowrap;
+    }
+    .navbar-moon-icon { font-size: 1rem; }
+    @media (max-width: 640px) {
+      .navbar-moon { display: none; }
+    }
+
   </style>
 </head>
 <body>
@@ -1220,6 +1235,11 @@
   <!-- ─── HEADER ─── -->
   <nav class="navbar">
     <a href="#" class="navbar-brand">Tinkerbell</a>
+    <div class="navbar-moon">
+      <span>¿Qué luna tenemos hoy?</span>
+      <span class="navbar-moon-icon" id="moon-icon">🌙</span>
+      <span id="moon-phase-text">Cargando...</span>
+    </div>
     <ul class="navbar-links">
       <li><a href="#tienda">Tienda</a></li>
       <li><a href="#como-pedir">Cómo pedir</a></li>
@@ -1679,15 +1699,10 @@
         posts.forEach(post => {
           const card = document.createElement('div');
           card.className = 'blog-card';
-          const fecha = (() => {
-            const [y,m,d] = post.fecha.split('-').map(Number);
-            return new Date(y,m-1,d).toLocaleDateString('es-CL',{day:'numeric',month:'long',year:'numeric'});
-          })();
           card.innerHTML = `
             <div class="blog-emoji">${post.emoji}</div>
             <h3 class="blog-card-title">${post.titulo}</h3>
             <p class="blog-card-desc">${post.descripcion}</p>
-            <span class="blog-card-date">${fecha}</span>
           `;
           grid.appendChild(card);
         });
@@ -1735,6 +1750,34 @@ document.addEventListener('click', function(e) {
     menu.classList.remove('open');
   }
 });
+
+
+function getMoonPhase() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const day = now.getDate();
+  let y = year, m = month;
+  if (m < 3) { y--; m += 12; }
+  const a = Math.floor(y / 100);
+  const b = 2 - a + Math.floor(a / 4);
+  const jd = Math.floor(365.25 * (y + 4716)) + Math.floor(30.6001 * (m + 1)) + day + b - 1524.5;
+  const daysSinceNew = (jd - 2451549.5) % 29.53058853;
+  const age = daysSinceNew < 0 ? daysSinceNew + 29.53058853 : daysSinceNew;
+  let phase, icon;
+  if (age < 1.85) { phase = 'Luna Nueva'; icon = '🌑'; }
+  else if (age < 7.38) { phase = 'Luna Creciente'; icon = '🌒'; }
+  else if (age < 9.22) { phase = 'Cuarto Creciente'; icon = '🌓'; }
+  else if (age < 14.77) { phase = 'Gibosa Creciente'; icon = '🌔'; }
+  else if (age < 16.61) { phase = 'Luna Llena'; icon = '🌕'; }
+  else if (age < 22.15) { phase = 'Gibosa Menguante'; icon = '🌖'; }
+  else if (age < 23.99) { phase = 'Cuarto Menguante'; icon = '🌗'; }
+  else if (age < 29.53) { phase = 'Luna Menguante'; icon = '🌘'; }
+  else { phase = 'Luna Nueva'; icon = '🌑'; }
+  document.getElementById('moon-phase-text').textContent = phase;
+  document.getElementById('moon-icon').textContent = icon;
+}
+getMoonPhase();
 
   </script>
 </body>
